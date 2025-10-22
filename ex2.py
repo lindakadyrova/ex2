@@ -7,3 +7,7 @@ college.columns = college.columns.str.replace('.', '_', regex=False)
 college['Acceptance_Rate'] = ((college['Accept'] / college['Apps']) * 100).round(1)
 college.sort_values(by=['Private', 'Apps'], ascending=[True, True], inplace=True)
 print(college)
+
+
+college['Elite'] = pd.cut(college['Top10perc'], bins=[0, 50, 100], labels=['Nicht-Elite', 'Elite'])
+print(college[['Top10perc', 'Elite']])
